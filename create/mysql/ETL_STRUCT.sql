@@ -18,5 +18,3 @@ CREATE TABLE IF NOT EXISTS `ETL_STRUCT` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unity_index` (`imex`,`type`,`hosts`,`fromdb`,`aimsdb`,`table`) USING BTREE  COMMENT '唯一索引，用于去重'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT 'ETL结构表';
-
-
