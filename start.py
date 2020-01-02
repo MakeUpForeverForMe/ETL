@@ -2,7 +2,6 @@ from lib.MySQLConnect import MySQLConnect
 from json import loads
 from datetime import datetime
 
-print()
 with MySQLConnect() as con:
   con.execute('select * from ETL_STRUCT')
   datas = con.fetchall()
@@ -18,7 +17,10 @@ with MySQLConnect() as con:
     print('table\t', data['table'])
     print('stime\t', datetime.timetuple(data['stime']))
     print('ltime\t', data['ltime'])
-    parti = None
+    year_month = None
+    day_of_month = None
     if data['parti'] is not None:
-      parti = loads(data['parti'])
-    print('parti\t', parti)
+      year_month = loads(data['parti'])['year_month']
+      day_of_month = loads(data['parti'])['day_of_month']
+    print('year_month\t', year_month)
+    print('day_of_month\t', day_of_month)
