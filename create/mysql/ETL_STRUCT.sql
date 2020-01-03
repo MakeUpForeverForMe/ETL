@@ -15,5 +15,4 @@ CREATE TABLE IF NOT EXISTS `ETL_STRUCT` (
   `ltime`   datetime      NOT NULL  DEFAULT '2019-01-01 00:00:00'   COMMENT '上次执行时间',
   `parti`   varchar(256)  DEFAULT NULL                              COMMENT '分区字段',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unity_index` (`alias`) USING BTREE  COMMENT '唯一索引，用于去重'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT 'ETL结构表';
