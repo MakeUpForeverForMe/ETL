@@ -2,8 +2,8 @@ from lib.MySQLConnect import MySQLConnect
 from json import loads
 from datetime import datetime
 
-with MySQLConnect(host='192.168.18.100',passwd='000000') as con:
-  con.execute('select * from ETL_STRUCT')
+with MySQLConnect(host='192.168.18.100', passwd='000000') as con:
+  con.execute('select * from STRUCT_ETL')
   datas = con.fetchall()
   for data in datas:
     print('alias\t', data['alias'])
