@@ -2,7 +2,7 @@ from pymysql import connect, cursors
 
 
 class MySQLConnect:
-  def __init__(self, host='10.83.16.22', port=3306, user='root', passwd='INikGPLun*8v', db='etl_python', charset='utf8'):
+  def __init__(self, host='localhost', port=3306, user='root', passwd='', db='etl', charset='utf8'):
     # 建立连接
     self.conn = connect(host=host, port=port, db=db, user=user, passwd=passwd, charset=charset)
     # 创建游标，操作设置为字典类型
