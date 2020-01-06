@@ -9,21 +9,27 @@
   <version>0.1</version>
 
   <properties>
+    <!-- 编码格式 -->
     <encoding>UTF-8</encoding>
-    <!-- Scala版本 -->
-    <scala.compat>2.11</scala.compat>
-    <scala.version>${scala.compat}.8</scala.version>
-    <!-- Mysql-Connector版本 -->
-    <mysqlConnect.version>6.0.6</mysqlConnect.version>
-    <!-- Druid版本 -->
-    <druid.version>1.1.21</druid.version>
-    <!-- Junit版本 -->
-    <junit.version>5.5.2</junit.version>
-
     <!-- Scala编译插件 -->
     <scala.maven.plugin>3.2.2</scala.maven.plugin>
     <!-- Maven打包插件 -->
     <maven.shade.plugin>2.4.3</maven.shade.plugin>
+
+    <!-- Scala大版本 -->
+    <scala.compat>2.11</scala.compat>
+    <!-- Scala版本 -->
+    <scala.version>${scala.compat}.8</scala.version>
+    <!-- Junit版本 -->
+    <junit.version>5.5.2</junit.version>
+    <!-- Mysql-Connector版本 -->
+    <mysqlConnect.version>6.0.6</mysqlConnect.version>
+    <!-- Druid版本 -->
+    <druid.version>1.1.21</druid.version>
+    <!-- DBUtils版本 -->
+    <dbutils.version>1.7</dbutils.version>
+
+
   </properties>
 
   <dependencies>
@@ -32,6 +38,14 @@
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
       <version>${scala.version}</version>
+    </dependency>
+
+    <!-- 添加Junit的依赖 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- 添加MySQL连接依赖 -->
@@ -48,12 +62,11 @@
       <version>${druid.version}</version>
     </dependency>
 
-    <!-- 添加Junit的依赖 -->
+    <!-- 添加DBUtils的依赖 -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
+      <groupId>commons-dbutils</groupId>
+      <artifactId>commons-dbutils</artifactId>
+      <version>${dbutils.version}</version>
     </dependency>
 
   </dependencies>
