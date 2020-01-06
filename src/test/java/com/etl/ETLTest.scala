@@ -5,8 +5,14 @@ import org.junit.jupiter.api.Test
 
 class ETLTest {
 
+  private val jDBCUtils = new JDBCUtils()
+
   @Test
   def ConnectTest(): Unit = {
-    println(new JDBCUtils().getConnection)
+    println(jDBCUtils.getConnection)
   }
+
+//  def closeTest(): Unit = {
+//    jDBCUtils.closeConnect()
+//  }
 }
