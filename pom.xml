@@ -10,8 +10,11 @@
 
   <properties>
     <encoding>UTF-8</encoding>
-    <scala.version>2.11.8</scala.version>
-    <scala.compat.version>2.11</scala.compat.version>
+    <!-- Scala版本 -->
+    <scala.compat>2.11</scala.compat>
+    <scala.version>${scala.compat}.8</scala.version>
+    <!-- Druid版本 -->
+    <druid.version>1.1.21</druid.version>
 
     <!-- Scala编译插件 -->
     <scala.maven.plugin>3.2.2</scala.maven.plugin>
@@ -20,12 +23,20 @@
   </properties>
 
   <dependencies>
-    <!-- 添加scala的依赖 -->
+    <!-- 添加Scala的依赖 -->
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
       <version>${scala.version}</version>
     </dependency>
+
+    <!-- 添加Druid的依赖 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -80,12 +91,12 @@
               </filters>
               <transformers>
                 <transformer
-                    implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                   <resource>reference.conf</resource>
                 </transformer>
                 <!-- 指定main方法 -->
                 <transformer
-                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <mainClass>x</mainClass>
                 </transformer>
               </transformers>
