@@ -2,7 +2,8 @@ from lib.MySQLConnect import MySQLConnect
 from json import loads
 from datetime import datetime
 
-with MySQLConnect(host='192.168.18.100', passwd='000000') as con:
+# with MySQLConnect(host='192.168.18.100', passwd='000000') as con:
+with MySQLConnect(host='10.83.16.22', passwd='INikGPLun*8v') as con:
   con.execute('select * from STRUCT_BASE')
   datas = con.fetchall()
   print(datas)
