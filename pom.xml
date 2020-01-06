@@ -13,8 +13,12 @@
     <!-- Scala版本 -->
     <scala.compat>2.11</scala.compat>
     <scala.version>${scala.compat}.8</scala.version>
+    <!-- Mysql-Connector版本 -->
+    <mysqlConnect.version>6.0.6</mysqlConnect.version>
     <!-- Druid版本 -->
     <druid.version>1.1.21</druid.version>
+    <!-- Junit版本 -->
+    <junit.version>5.5.2</junit.version>
 
     <!-- Scala编译插件 -->
     <scala.maven.plugin>3.2.2</scala.maven.plugin>
@@ -30,6 +34,13 @@
       <version>${scala.version}</version>
     </dependency>
 
+    <!-- 添加MySQL连接依赖 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysqlConnect.version}</version>
+    </dependency>
+
     <!-- 添加Druid的依赖 -->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -37,6 +48,13 @@
       <version>${druid.version}</version>
     </dependency>
 
+    <!-- 添加Junit的依赖 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 
