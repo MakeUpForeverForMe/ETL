@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `STRUCT_ETL` (
   `aims`        VARCHAR(64)   DEFAULT NULL                              COMMENT '数据目标路径或库',
   `table`       VARCHAR(64)   DEFAULT NULL                              COMMENT '数据目标表名',
   `stime`       datetime      NOT NULL  DEFAULT '2019-01-01 00:00:00'   COMMENT '执行开始时间',
-  `ltime`       datetime      NOT NULL  DEFAULT '2019-01-01 00:00:00'   COMMENT '上次执行时间',
+  `ltime`       datetime      DEFAULT NULL                              COMMENT '上次执行时间',
   `parti`       VARCHAR(256)  DEFAULT NULL                              COMMENT '分区字段',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT 'ETL结构表';
