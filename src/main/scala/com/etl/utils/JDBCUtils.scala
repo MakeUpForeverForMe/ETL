@@ -17,9 +17,5 @@ class JDBCUtils {
 
   def getConnection: Connection = source.getConnection
 
-  def closeConnect(connection: Connection, statement: Statement, resultSet: ResultSet): Unit = {
-    DbUtils.closeQuietly(connection)
-    DbUtils.closeQuietly(statement)
-    DbUtils.closeQuietly(resultSet)
-  }
+  def closeConnect(connection: Connection, statement: Statement, resultSet: ResultSet): Unit = DbUtils.closeQuietly(connection, statement, resultSet)
 }
