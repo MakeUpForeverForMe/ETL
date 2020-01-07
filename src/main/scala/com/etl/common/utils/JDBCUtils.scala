@@ -1,4 +1,4 @@
-package com.etl.utils
+package com.etl.common.utils
 
 import java.sql.{Connection, ResultSet, Statement}
 import java.util.Properties
@@ -12,8 +12,12 @@ import scala.io.Source
 class JDBCUtils {
   private var source: DataSource = _
   private val properties = new Properties()
-  properties.load(Source.fromFile(this.getClass.getClassLoader.getResource("jdbc.properties").getPath).bufferedReader())
-  source = DruidDataSourceFactory.createDataSource(properties)
+  try {
+    properties.load(Source.fromFile(this.getClass.getClassLoader.getResource("jdbc.properties").getPath).bufferedReader())
+    source = DruidDataSourceFactory.createDataSource(properties)
+  } catch {
+    case e: Exception => e.printStackTrace()
+  }
 
   def getConnection: Connection = source.getConnection
 

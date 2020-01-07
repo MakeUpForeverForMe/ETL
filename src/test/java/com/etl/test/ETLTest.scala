@@ -1,6 +1,6 @@
-package com.etl
+package com.etl.test
 
-import com.etl.utils.JDBCUtils
+import com.etl.common.utils.JDBCUtils
 import org.apache.log4j.Logger
 import org.junit.jupiter.api.Test
 
