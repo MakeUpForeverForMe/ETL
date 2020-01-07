@@ -16,28 +16,30 @@
     <!-- Maven打包插件 -->
     <maven.shade.plugin>2.4.3</maven.shade.plugin>
 
+    <!-- Log4j版本 -->
+    <log4j.version>1.2.17</log4j.version>
+    <!-- Junit版本 -->
+    <junit.version>5.5.2</junit.version>
     <!-- Scala大版本 -->
     <scala.compat>2.11</scala.compat>
     <!-- Scala版本 -->
     <scala.version>${scala.compat}.8</scala.version>
-    <!-- Junit版本 -->
-    <junit.version>5.5.2</junit.version>
+
     <!-- Mysql-Connector版本 -->
     <mysqlConnect.version>6.0.6</mysqlConnect.version>
     <!-- Druid版本 -->
     <druid.version>1.1.21</druid.version>
     <!-- DBUtils版本 -->
     <dbutils.version>1.7</dbutils.version>
-
-
   </properties>
 
+
   <dependencies>
-    <!-- 添加Scala的依赖 -->
+    <!-- 添加Log4j的依赖 -->
     <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-library</artifactId>
-      <version>${scala.version}</version>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${log4j.version}</version>
     </dependency>
 
     <!-- 添加Junit的依赖 -->
@@ -46,6 +48,13 @@
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- 添加Scala的依赖 -->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
     </dependency>
 
     <!-- 添加MySQL连接依赖 -->
