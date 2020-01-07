@@ -16,10 +16,13 @@
     <!-- Maven打包插件 -->
     <maven.shade.plugin>2.4.3</maven.shade.plugin>
 
-    <!-- Log4j版本 -->
-    <log4j.version>1.2.17</log4j.version>
     <!-- Junit版本 -->
     <junit.version>5.5.2</junit.version>
+    <!-- Log4j版本 -->
+    <log4j.version>1.2.17</log4j.version>
+    <!-- Aes相关版本 -->
+    <aes.version>1.11</aes.version>
+
     <!-- Scala大版本 -->
     <scala.compat>2.11</scala.compat>
     <!-- Scala版本 -->
@@ -35,6 +38,14 @@
 
 
   <dependencies>
+    <!-- 添加Junit的依赖 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
     <!-- 添加Log4j的依赖 -->
     <dependency>
       <groupId>log4j</groupId>
@@ -42,12 +53,11 @@
       <version>${log4j.version}</version>
     </dependency>
 
-    <!-- 添加Junit的依赖 -->
+    <!-- 关于aes加密的依赖 -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>${aes.version}</version>
     </dependency>
 
     <!-- 添加Scala的依赖 -->
