@@ -17,7 +17,7 @@
     <maven.shade.plugin>2.4.3</maven.shade.plugin>
 
     <!-- Junit版本 -->
-    <junit.version>5.5.2</junit.version>
+    <junit.version>4.12</junit.version>
     <!-- Log4j版本 -->
     <log4j.version>1.2.17</log4j.version>
     <!-- Aes相关版本 -->
@@ -38,8 +38,8 @@
   <dependencies>
     <!-- 添加Junit的依赖 -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
