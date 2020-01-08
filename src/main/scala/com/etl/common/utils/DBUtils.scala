@@ -21,8 +21,6 @@ sealed class DBUtils {
 
   def getConnection: Connection = source.getConnection
 
-  def close(connection: Connection, statement: Statement, resultSet: ResultSet): Unit = closeBase(connection, statement, resultSet)
-
   def close(connection: Connection, statement: Statement): Unit = close(connection, statement, null)
 
   def close(statement: Statement, resultSet: ResultSet): Unit = close(null, statement, resultSet)
@@ -33,7 +31,7 @@ sealed class DBUtils {
 
   def close(resultSet: ResultSet): Unit = JdbcUtils.close(resultSet)
 
-  private def closeBase(connection: Connection, statement: Statement, resultSet: ResultSet): Unit = {
+  def close(connection: Connection, statement: Statement, resultSet: ResultSet): Unit = {
     close(resultSet)
     close(statement)
     close(connection)
