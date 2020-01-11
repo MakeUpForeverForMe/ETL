@@ -1,5 +1,7 @@
 package com.etl.test
 
+import java.sql.{SQLIntegrityConstraintViolationException, SQLSyntaxErrorException}
+
 import com.etl.common._
 import com.alibaba.druid.util.JdbcUtils
 import com.etl.common.dao.BaseDao
@@ -21,22 +23,16 @@ class ETLTest {
   @Before
   def connectionTest(): Unit = {
     logger.debug("首先测试任务 connectionTest")
-    logger.info("connection：" + connection)
+    logger.info("获取连接 connection：" + connection)
+    logger.info("获取连接 成功")
   }
 
   @After
   def closeConnectionTest(): Unit = {
     logger.debug("末尾测试任务 closeConnectionTest")
-    logger.info("close connection")
+    logger.info("关闭连接 connection")
     DBUtils.close(connection)
-  }
-
-  @Test
-  def insertIntoTableTest(): Unit = {
-    logger.info("向表中插入数据 ------------------------------------------ 开始")
-    val hashMap = SMMap += (("use_type", 0), ("type", "mysql"), ("hosts", "mysql22"), ("user", aes.encrypt("root")), ("passwd", aes.encrypt("INikGPLun*8v")), ("base_path", "microb"))
-    JdbcUtils.insertToTable(dataSource, "STRUCT_BASE", hashMap)
-    logger.info("向表中插入数据 ------------------------------------------ 完成")
+    logger.info("关闭连接 connection 成功")
   }
 
   @Test
@@ -52,5 +48,18 @@ class ETLTest {
     val sql = "select * from STRUCT_BASE"
     new BaseDao().execute(DBUtils.getDataSource, sql).foreach(println)
     logger.info("获取表 STRUCT_BASE 的数据 ------------------------------------------ 完成")
+  }
+
+  @Test
+  def insertIntoTableTest(): Unit = {
+    logger.info("向表中插入数据 ------------------------------------------ 开始")
+    val hashMap = SMMap += (("use_type", 0), ("type", "mysql"), ("hosts", "mysql22"), ("user", aes.encrypt("root")), ("passwd", aes.encrypt("000000")), ("source_path", "microb"))
+    try {
+      JdbcUtils.insertToTable(dataSource, "STRUCT_BASE", hashMap)
+    } catch {
+      case e: SQLIntegrityConstraintViolationException => logger.info("此条数据已存在，不可重复插入" + e.printStackTrace())
+      case e: SQLSyntaxErrorException => logger.info("SQL 语句存在错误，请检查 SQL" + e.printStackTrace())
+    }
+    logger.info("向表中插入数据 ------------------------------------------ 完成")
   }
 }
