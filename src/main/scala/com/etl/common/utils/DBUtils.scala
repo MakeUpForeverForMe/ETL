@@ -25,15 +25,15 @@ sealed class DBUtils {
 
   def close(statement: Statement, resultSet: ResultSet): Unit = close(null, statement, resultSet)
 
-  def close(connection: Connection): Unit = JdbcUtils.close(connection)
-
-  def close(statement: Statement): Unit = JdbcUtils.close(statement)
-
-  def close(resultSet: ResultSet): Unit = JdbcUtils.close(resultSet)
-
   def close(connection: Connection, statement: Statement, resultSet: ResultSet): Unit = {
     close(resultSet)
     close(statement)
     close(connection)
   }
+
+  def close(connection: Connection): Unit = JdbcUtils.close(connection)
+
+  def close(statement: Statement): Unit = JdbcUtils.close(statement)
+
+  def close(resultSet: ResultSet): Unit = JdbcUtils.close(resultSet)
 }
