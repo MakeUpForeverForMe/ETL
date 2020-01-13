@@ -9,14 +9,22 @@ case class StructBase(
                        id: Long,
                        ctime: Timestamp,
                        utime: Timestamp,
-                       idType: Int,
-                       useType: String,
+                       useType: Int,
+                       sourceType: String,
                        hosts: String,
                        user: String,
                        passwd: String,
                        sourcePath: String
                      ) extends ResultSetConsumer[StructBase] with Serializable {
-  override def toString: String = id + "\t" + ctime + "\t" + utime + "\t" + idType + "\t" + useType + "\t" + hosts + "\t" + user + "\t" + passwd + "\t" + sourcePath
+  override def toString: String = "id = ‘" + id + "’\t" +
+    "ctime = ‘" + ctime + "’\t" +
+    "utime = ‘" + utime + "’\t" +
+    "useType = ‘" + useType + "’\t" +
+    "sourceType = ‘" + sourceType + "’\t" +
+    "hosts = ‘" + hosts + "’\t" +
+    "user = ‘" + user + "’\t" +
+    "passwd = ‘" + passwd + "’\t" +
+    "sourcePath = ‘" + sourcePath + "’"
 
   override def apply(rs: ResultSet): StructBase = ???
 
