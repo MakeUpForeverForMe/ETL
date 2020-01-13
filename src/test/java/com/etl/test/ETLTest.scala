@@ -1,9 +1,10 @@
 package com.etl.test
 
-import java.sql.{SQLIntegrityConstraintViolationException, SQLSyntaxErrorException}
+import java.sql.{SQLIntegrityConstraintViolationException, SQLSyntaxErrorException, Timestamp}
 
 import com.etl.common._
 import com.alibaba.druid.util.JdbcUtils
+import com.etl.common.bean.StructBase
 import com.etl.common.dao.BaseDao
 import com.etl.common.utils.{AesPlus, DBUtils}
 import org.apache.log4j.Logger
@@ -61,5 +62,12 @@ class ETLTest {
       case e: SQLSyntaxErrorException => logger.info("SQL 语句存在错误，请检查 SQL" + e.printStackTrace())
     }
     logger.info("向表中插入数据 ------------------------------------------ 完成")
+  }
+
+
+  @Test
+  def caseClassTest(): Unit = {
+    val structBase = StructBase(0, Timestamp.valueOf("2020-01-01 00:00:00"), Timestamp.valueOf("2020-01-01 00:00:00"), 0, "mysql", "mysql22", "root", "000000", "microb")
+    println(structBase)
   }
 }
