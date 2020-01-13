@@ -12,14 +12,14 @@ import scala.io.Source
 object DBUtils extends DBUtils
 
 sealed class DBUtils {
-  private var source: DataSource = _
+  private var dataSource: DataSource = _
   private val properties = new Properties()
   properties.load(Source.fromFile(this.getClass.getClassLoader.getResource("jdbc.properties").getPath).bufferedReader())
-  source = DruidDataSourceFactory.createDataSource(properties)
+  dataSource = DruidDataSourceFactory.createDataSource(properties)
 
-  def getDataSource: DataSource = source
+  def getDataSource: DataSource = dataSource
 
-  def getConnection: Connection = source.getConnection
+  def getConnection: Connection = dataSource.getConnection
 
   def close(connection: Connection, statement: Statement): Unit = close(connection, statement, null)
 
