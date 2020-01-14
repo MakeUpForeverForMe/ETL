@@ -10,6 +10,8 @@ import com.etl.common.utils.{AesPlus, DBUtils}
 import org.apache.log4j.Logger
 import org.junit.{After, Before, Test}
 
+import scala.collection.mutable
+
 
 class ETLTest {
   private val logger: Logger = Logger.getLogger(this.getClass)
@@ -54,7 +56,7 @@ class ETLTest {
   @Test
   def insertIntoTableTest(): Unit = {
     logger.info("向表中插入数据 ------------------------------------------ 开始")
-    val hashMap = SMMap += (("use_type", 0), ("type", "mysql"), ("hosts", "mysql22"), ("user", aes.encrypt("root")), ("passwd", aes.encrypt("000000")), ("source_path", "microb"))
+    val hashMap: SMMap = SMMap(Seq(("use_type", 0), ("type", "mysql"), ("hosts", "mysql22"), ("user", aes.encrypt("root")), ("passwd", aes.encrypt("000000")), ("source_path", "microb")))
     try {
       JdbcUtils.insertToTable(dataSource, "STRUCT_BASE", hashMap)
     } catch {
