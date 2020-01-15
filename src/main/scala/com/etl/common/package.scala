@@ -10,7 +10,7 @@ package object common {
   type JuList = java.util.List[JuMap]
 
   type SMMap = mutable.Map[String, Any]
-  val SMMap: Seq[(String, Any)] => mutable.HashMap[String, Any] = mutable.HashMap[String, Any]
+  val SMMap: mutable.HashMap.type = mutable.HashMap
 
   type SuMapRef = mutable.Map[String, AnyRef]
 
