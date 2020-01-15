@@ -23,7 +23,8 @@ class ETLTest {
   logger.debug("创建加密对象")
   private val aes = new AesPlus()
 
-  @Before
+  @Test
+  //  @Before
   def connectionTest(): Unit = {
     logger.debug("首先测试任务 connectionTest")
     logger.info("获取连接 connection：" + connection)
@@ -56,7 +57,7 @@ class ETLTest {
   @Test
   def insertIntoTableTest(): Unit = {
     logger.info("向表中插入数据 ------------------------------------------ 开始")
-    val hashMap: SMMap = SMMap(Seq(("use_type", 0), ("type", "mysql"), ("hosts", "mysql22"), ("user", aes.encrypt("root")), ("passwd", aes.encrypt("000000")), ("source_path", "microb")))
+    val hashMap: SMMap = SMMap(("use_type", 0), ("type", "mysql"), ("hosts", "mysql22"), ("user", aes.encrypt("root")), ("passwd", aes.encrypt("000000")), ("source_path", "microb"))
     try {
       JdbcUtils.insertToTable(dataSource, "STRUCT_BASE", hashMap)
     } catch {
